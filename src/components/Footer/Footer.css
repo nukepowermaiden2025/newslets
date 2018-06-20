@@ -1,0 +1,15 @@
+
+@media (min-width:369px){
+    footer {
+   
+        background-color:white;
+        padding-top:5vh;
+        
+    }
+    
+    img{
+        max-height: 5vh;
+        max-width: 5vw;
+    }
+    
+}
