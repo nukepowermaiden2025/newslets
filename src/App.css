@@ -3,7 +3,7 @@
   padding: 0;
   }
 
-  .container > div {
+  .container > div,footer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,11 +24,15 @@ html, body {
   background-color: #88d8b0;
 }
 
+.container > div:nth-child(3n)> div {
+  background-color:#95d888;
+}
+
 .container > div:nth-child(2n) {
       background-color: #ff6f69;
 }
 
-.container > div:nth-child(4n) {
+.container > footer {
       background-color: #ffcc5c;
 }
 

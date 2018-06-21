@@ -6,7 +6,36 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
-  grid-template-rows: repeat(2, 50px);
+  grid-template-columns: repeat(12,1fr);
+  grid-template-rows: 10vh 70vh 10vh;
+  grid-template-areas:
+  "a a a a h h h h h h h h"
+  "a a a a c c c c c c c c"
+  "f f f f f f f f f f f f"
+  ;
   grid-gap: 3px;
+}
+
+
+.header {
+  grid-area: h;
+}
+.content {
+  grid-area: c;
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: repeat(1,1fr);
+  grid-template-rows: 35vh 35vh; 
+  grid-template-areas: ""; 
+  /* Build cell pattern here */
+}
+.aside {
+  grid-area: a;
+}
+.footer {
+  grid-area: f;
+}
+
+.cell {
+  grid-column:  1 / -1;
 }
