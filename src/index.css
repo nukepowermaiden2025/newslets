@@ -6,36 +6,51 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: repeat(12,1fr);
-  grid-template-rows: 10vh 70vh 10vh;
-  grid-template-areas:
-  "a a a a h h h h h h h h"
-  "a a a a c c c c c c c c"
-  "f f f f f f f f f f f f"
-  ;
   grid-gap: 3px;
-}
+  grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+  grid-template-rows:repeat(2, [row] auto);
 
+}
 
 .header {
-  grid-area: h;
-}
-.content {
-  grid-area: c;
-  display: grid;
-  grid-gap: 3px;
-  grid-template-columns: repeat(1,1fr);
-  grid-template-rows: 35vh 35vh; 
-  grid-template-areas: ""; 
-  /* Build cell pattern here */
-}
-.aside {
-  grid-area: a;
-}
-.footer {
-  grid-area: f;
+  grid-column: 1/-1;
+  grid-row: 1;
 }
 
-.cell {
-  grid-column:  1 / -1;
+.content {
+  grid-row:2;
+  grid-column:3/-1;
+
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+
 }
+
+/* .cell1{
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+.cell2{
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+.cell3{
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+.cell{
+  grid-column: 1 / 3;
+  grid-row: 1;
+} */
+
+.aside {
+  grid-row: 2;
+  grid-column: 1/3
+}
+.footer {
+  grid-column: 1/-1;
+}
+
+
+

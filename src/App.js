@@ -13,10 +13,10 @@ class App extends Component {
           <div class="header">HEADER</div>
           <div class="aside">ASIDE</div>
           <div class="content">
-            <div class="cell">Cell 1</div>
-            <div class="cell">Cell 2</div>
-            <div class="cell">Cell 3</div>
-            <div class="cell">Cell 4</div>
+            <div class="cell1">Cell 1</div>
+            <div class="cell2">Cell 2</div>
+            <div class="cell3">Cell 3</div>
+            <div class="cell4">Cell 4</div>
           </div>
           <footer class="footer">FOOTER</footer>
         </div>
