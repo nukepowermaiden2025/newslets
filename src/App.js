@@ -12,12 +12,10 @@ class App extends Component {
         <div class="container">
           <div class="header">HEADER</div>
           <div class="aside">ASIDE</div>
-          <div class="content">
-            <div class="cell1">Cell 1</div>
-            <div class="cell2">Cell 2</div>
-            <div class="cell3">Cell 3</div>
-            <div class="cell4">Cell 4</div>
-          </div>
+          <div class="content-a"> CONTENT A</div>
+          <div class="content-b"> CONTENT B</div>
+          <div class="content-c"> CONTENT C</div>
+          <div class="content-d"> CONTENT D</div>
           <footer class="footer">FOOTER</footer>
         </div>
         <Footer />
