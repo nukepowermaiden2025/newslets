@@ -11,5 +11,9 @@
         max-height: 5vh;
         max-width: 5vw;
     }
+
+    .icon{
+        font-size: 5px;
+    }
     
 }

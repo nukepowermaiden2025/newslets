@@ -6,6 +6,7 @@
 ///Title
 ///Description
 ///Href
-///Image
+//Img(will ot be displayed here)
 ///Key/Id
 ///Onclick <button> to Handle "Favorite the article"
+//Note when I return the JSON from the api I will return all the

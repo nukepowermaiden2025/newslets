@@ -5,4 +5,12 @@
 //This component will render articles to the Featured Content Components
 //This will have the button that renders new articles
 //Props need:
-//...props
+
+import React from "react";
+import "./Aside.css";
+
+const Aside = props => {
+  return <div className="aside">ASIDE</div>;
+};
+
+export default Aside;

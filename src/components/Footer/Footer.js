@@ -21,13 +21,6 @@ const Footer = () => {
             src="https://image.flaticon.com/icons/svg/174/174857.svg"
             alt="LinkedIn"
           />
-          <img
-            href="https://stackoverflow.com/users/9202048/kourtney-a-reynolds"
-            target="_blank"
-            rel="noopener noreferrer"
-            src="https://image.flaticon.com/icons/svg/732/732248.svg"
-            alt="StackOverflow"
-          />
           <h5>&copy; 2018 Kourtney Reynolds </h5>
         </footer>
       </div>
