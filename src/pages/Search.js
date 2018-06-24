@@ -9,14 +9,17 @@ import Button from "../components/Button"; //TODO connectbutton
 import SearchForm from "../components/SearchForm";
 // import SearchResults from "../components/SearchResults";
 // import Alert from "../components/Alert";
+import DatePicker from "../components/DatePicker";
+import moment from "moment";
 
 class Search extends Component {
   state = {
-    startDate: "",
-    endDate: "",
+    fromDate: "",
+    toDate: "",
     articles: [],
     results: [],
-    error: ""
+    error: "",
+    date: ""
   };
 
   // When the component mounts, get a list of todays headlines
@@ -30,65 +33,41 @@ class Search extends Component {
   //       .then(res => this.setState({ result: res.data }))
   //       .catch(err => console.log(err));
   //   };
-  //Needs to get startdate and enddate and set is equal to this.startdate and this.enddate//TODO
-  handleChangeStartDate = event => {
-    const value = event.target.value;
-    const name = event.target.name;
-    this.setState({
-      [name]: value,
-      startDate: value
-    });
-    console.log("Input change connected StartDate: ", value);
-  };
-  handleChangeEndDate = event => {
-    const value = event.target.value;
-    const name = event.target.name;
-    this.setState({
-      [name]: value,
-      endDate: value
-    });
-    console.log("Input change connected EndDate: ", value);
-  };
 
   // When the form is submitted, search the OMDB API for the value of `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
     console.log("The submit button is working");
-    console.log("Input Start Year ", this.state.startDate);
-    console.log("Input End Year ", this.state.endDate);
+    console.log("Input From Date being sumitted is ", this.state.fromDate);
+    console.log("Input To Date being sumitted is ", this.state.toDate);
     this.setState({
-      startDate: "",
-      endDate: ""
+      fromDate: "",
+      toDate: ""
     });
-
     // this.searchArticles(this.state.search);
   };
+
+  handleFromDate = date => {
+    this.setState({ fromDate: moment(date._d).format("YYYYMMDD") });
+  };
+  handleToDate = date => {
+    this.setState({ toDate: moment(date._d).format("YYYYMMDD") });
+  };
   render() {
-    console.log("Input Start Year ", this.state.startDate);
-    console.log("Input End Year ", this.state.endDate);
+    console.log("Input from date ", this.state.fromDate);
+    console.log("Input to date ", this.state.toDate);
     return (
       <div className="form-container">
-        <SearchForm
-          fromTo="From"
-          labelId="startDate"
-          handleChange={this.handleChangeStartDate.bind(this)}
-          value={this.state.startDate}
-          name={this.state.name}
-          type="text"
-          className="form1"
-          placeholder="Start Year"
+        <DatePicker
+          placeholder="From Date"
+          dateName="fromDate"
+          handleDate={this.handleFromDate}
         />
-        <SearchForm
-          fromTo="To"
-          labelId="endDate"
-          handleChange={this.handleChangeEndDate.bind(this)}
-          value={this.state.endDate}
-          name={this.state.name}
-          type="text"
-          className="form2"
-          placeholder="End Year"
+        <DatePicker
+          placeholder="To Date"
+          dateName="toDate"
+          handleDate={this.handleToDate}
         />
-
         <Button handleFormSubmit={this.handleFormSubmit} />
         {/* <SearchResults results={this.state.results} /> */}
       </div>

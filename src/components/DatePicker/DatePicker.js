@@ -1,24 +1,20 @@
 import React from "react";
 import "./DatePicker.css";
-import "react-datetime";
+import DateTime from "react-datetime";
+import "moment";
 
-const DatePicker = React.createClass({
-  render: function() {
-    return <Datetime renderInput={this.renderInput} />;
-  },
-  renderInput: function(props, openCalendar, closeCalendar) {
-    function clear() {
-      props.onChange({ target: { value: "" } });
-    }
+class DatePicker extends React.Component {
+  render() {
     return (
-      <div>
-        <input {...props} />
-        <button onClick={openCalendar}>open calendar</button>
-        <button onClick={closeCalendar}>close calendar</button>
-        <button onClick={clear}>clear</button>
-      </div>
+      <DateTime
+        inputProps={{
+          name: this.props.dateName,
+          placeholder: this.props.placeholder
+        }}
+        onChange={this.props.handleDate}
+      />
     );
   }
-});
+}
 
 export default DatePicker;
