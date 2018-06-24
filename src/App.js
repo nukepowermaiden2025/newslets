@@ -6,12 +6,15 @@ import Title from "./components/Title";
 import Header from "./components/Header";
 import Aside from "./components/Aside";
 import Content from "./components/Content";
+// import SearchForm from "./components/SearchForm";
+import Search from "./pages/Search";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Title logo={logo} />
+        <Search />
         <div class="container">
           <Header />
           <Aside />

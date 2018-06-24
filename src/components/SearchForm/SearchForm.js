@@ -1,23 +1,20 @@
+//Get input from users for building the query
+//Submit will need to get functions for startdate/enddate
 import React from "react";
+import "./SearchForm.css";
 
 const SearchForm = props => (
   <form>
-    <div className="form-group">
-      <label htmlFor="search">Search:</label>
-      <input
-        onChange={props.handleInputChange}
-        value={props.value}
-        name="search"
-        type="text"
-        className="form-control"
-        placeholder="Search for Articles"
-        id="search"
-      />
-      <br />
-      <button onClick={props.handleFormSubmit} className="btn btn-primary">
-        Search
-      </button>
-    </div>
+    <label htmlFor={props.labelId}>{props.fromTo}</label>
+    <input
+      onChange={props.handleChange}
+      value={props.dateEntry}
+      name={props.name}
+      type="text"
+      className="form-control"
+      placeholder={props.placeholder}
+      id={props.labelId}
+    />
   </form>
 );
 

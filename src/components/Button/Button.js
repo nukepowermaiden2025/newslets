@@ -5,3 +5,15 @@
 //Props need:
 //...props
 //Onclick Handler
+import React from "react";
+import "./Button.css";
+
+const Button = props => {
+  return (
+    <button onClick={props.handleFormSubmit} className="btn btn-primary">
+      Search
+    </button> //Change this one to the method I used with last weeks homework
+  );
+};
+
+export default Button;
