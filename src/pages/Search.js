@@ -31,28 +31,47 @@ class Search extends Component {
   //       .catch(err => console.log(err));
   //   };
   //Needs to get startdate and enddate and set is equal to this.startdate and this.enddate//TODO
-  handleChange = event => {
-    console.log("Input change connected");
+  handleChangeStartDate = event => {
     const value = event.target.value;
     const name = event.target.name;
     this.setState({
-      [name]: value
+      [name]: value,
+      startDate: value
     });
+    console.log("Input change connected StartDate: ", value);
+  };
+  handleChangeEndDate = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value,
+      endDate: value
+    });
+    console.log("Input change connected EndDate: ", value);
   };
 
   // When the form is submitted, search the OMDB API for the value of `this.state.search`
   handleFormSubmit = event => {
+    event.preventDefault();
     console.log("The submit button is working");
-    // event.preventDefault();
+    console.log("Input Start Year ", this.state.startDate);
+    console.log("Input End Year ", this.state.endDate);
+    this.setState({
+      startDate: "",
+      endDate: ""
+    });
+
     // this.searchArticles(this.state.search);
   };
   render() {
+    console.log("Input Start Year ", this.state.startDate);
+    console.log("Input End Year ", this.state.endDate);
     return (
       <div className="form-container">
         <SearchForm
           fromTo="From"
           labelId="startDate"
-          handleChange={this.handleChange.bind(this)}
+          handleChange={this.handleChangeStartDate.bind(this)}
           value={this.state.startDate}
           name={this.state.name}
           type="text"
@@ -62,7 +81,7 @@ class Search extends Component {
         <SearchForm
           fromTo="To"
           labelId="endDate"
-          handleChange={this.handleChange.bind(this)}
+          handleChange={this.handleChangeEndDate.bind(this)}
           value={this.state.endDate}
           name={this.state.name}
           type="text"
