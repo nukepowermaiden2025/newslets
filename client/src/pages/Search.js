@@ -3,12 +3,11 @@
 
 import React, { Component } from "react";
 import "./Search.css";
-// import API from "../utils/API";TODO
+import API from "../utils/API";
 // import Container from "../components/Container";TODO
 import Button from "../components/Button"; //TODO connectbutton
 import Input from "../components/Input";
 // import SearchResults from "../components/SearchResults";
-// import Alert from "../components/Alert";
 import DatePicker from "../components/DatePicker";
 import ListPicker from "../components/ListPicker";
 
@@ -31,12 +30,12 @@ class Search extends Component {
   //     this.searchArticles("");
   //   }
 
-  //Search for Articles needs to get query from the API//TODO
-  //   searchArticles = query => {
-  //     API.search(query)
-  //       .then(res => this.setState({ result: res.data }))
-  //       .catch(err => console.log(err));
-  //   };
+  // Search for Articles needs to get query from the API//TODO
+  searchArticles = (query, fromDate, toDate) => {
+    API.search(query, fromDate, toDate)
+      .then(res => this.setState({ results: res.data }))
+      .catch(err => console.log(err));
+  };
 
   // When the form is submitted, search the OMDB API for the value of `this.state.search`
   handleFormSubmit = e => {
