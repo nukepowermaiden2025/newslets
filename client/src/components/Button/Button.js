@@ -10,13 +10,7 @@ import "./Button.css";
 
 const Button = props => {
   return (
-    <button
-      {...props}
-      onSubmit={e => props.handleFormSubmit(...props)}
-      className="btn btn-primary"
-    >
-      Search
-    </button> //Change this one to the method I used with last weeks homework
+    <button className="btn btn-primary">Search</button> //Change this one to the method I used with last weeks homework
   );
 };
 

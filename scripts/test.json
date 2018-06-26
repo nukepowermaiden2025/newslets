@@ -1,0 +1,57 @@
+{
+              rank: 0,
+              subtype: "xlarge",
+              caption: null,
+              credit: null,
+              type: "image",
+              url:
+                "images/2017/08/29/us/29dc-tower1/06TRUMPSOHOweb2-articleLarge.jpg",
+              height: 400,
+              width: 600,
+              legacy: {
+                xlargewidth: 600,
+                xlarge:
+                  "images/2017/08/29/us/29dc-tower1/06TRUMPSOHOweb2-articleLarge.jpg",
+                xlargeheight: 400
+              },
+              subType: "xlarge",
+              crop_name: null
+            },
+            {
+              rank: 0,
+              subtype: "wide",
+              caption: null,
+              credit: null,
+              type: "image",
+              url:
+                "images/2017/08/29/us/29dc-tower1/29dc-tower1-thumbWide-v2.jpg",
+              height: 126,
+              width: 190,
+              legacy: {
+                wide:
+                  "images/2017/08/29/us/29dc-tower1/29dc-tower1-thumbWide-v2.jpg",
+                widewidth: 190,
+                wideheight: 126
+              },
+              subType: "wide",
+              crop_name: null
+            },
+            {
+              rank: 0,
+              subtype: "thumbnail",
+              caption: null,
+              credit: null,
+              type: "image",
+              url:
+                "images/2017/08/29/us/29dc-tower1/29dc-tower1-thumbStandard-v2.jpg",
+              height: 75,
+              width: 75,
+              legacy: {
+                thumbnailheight: 75,
+                thumbnail:
+                  "images/2017/08/29/us/29dc-tower1/29dc-tower1-thumbStandard-v2.jpg",
+                thumbnailwidth: 75
+              },
+              subType: "thumbnail",
+              crop_name: null
+            }

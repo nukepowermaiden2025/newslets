@@ -38,26 +38,29 @@ class Search extends Component {
   };
 
   // When the form is submitted, search the OMDB API for the value of `this.state.search`
-  handleFormSubmit = e => {
-    e.preventDefault();
-    console.log("The submit button is working");
-    console.log("Input From Date being sumitted is ", this.state.fromDate);
-    console.log("Input To Date being sumitted is ", this.state.toDate);
-    this.setState({
-      fromDate: "",
-      toDate: ""
-    });
-    // this.searchArticles(this.state.search);
-  };
+  // handleFormSubmit = e => {
+  //   e.preventDefault();
+  //   console.log("The submit button is working");
+  //   console.log("Input From Date being sumitted is ", this.state.fromDate);
+  //   console.log("Input To Date being sumitted is ", this.state.toDate);
+  //   this.setState({
+  //     fromDate: "",
+  //     toDate: ""
+  //   });
+  //   // this.searchArticles(this.state.search);
+  // };
 
   handleFromDate = date => {
     this.setState({ fromDate: moment(date._d).format("YYYYMMDD") });
+    console.log(this.state.fromDate);
   };
   handleToDate = date => {
     this.setState({ toDate: moment(date._d).format("YYYYMMDD") });
+    console.log(this.state.fromDate);
   };
   handleRecordChange = e => {
     this.setState({ listpick: e.target.value });
+    // console.log(this.state.listpick);
   };
   handleInputChange = e => {
     const { name, value } = e.target;
@@ -69,22 +72,15 @@ class Search extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-    console.log(
-      "Search:",
-      this.state.search,
-      "fromDate:",
-      this.state.fromDate,
-      "toDate:",
-      this.state.toDate,
-      "listpick:",
-      this.state.listpick
-    );
-    // if (this.state.search && this.state.fromDate && this.state.Date) {
-    //   API.getArticles({
+    console.log("Search:", this.state.search);
+    console.log("this is the target record count", this.state.listpick);
+    console.log("Input from date ", this.state.fromDate);
+    console.log("Input to date ", this.state.toDate);
+    // if (this.state.search && this.state.fromDate && this.state.toDate) {
+    //   API.search({
     //     search: this.state.search,
     //     fromDate: this.state.fromDate,
     //     toDate: this.state.toDate,
-    //     listpick: this.state.listpick
     //   })
     //     .then(res => this.loadBooks())
     //     .catch(err => console.log(err));
@@ -92,19 +88,6 @@ class Search extends Component {
   };
 
   render() {
-    console.log(
-      "Search:",
-      this.state.search,
-      "fromDate:",
-      this.state.fromDate,
-      "toDate:",
-      this.state.toDate,
-      "listpick:",
-      this.state.listpick
-    );
-    console.log("this is the target record count", this.state.listpick);
-    console.log("Input from date ", this.state.fromDate);
-    console.log("Input to date ", this.state.toDate);
     return (
       <div className="form-container">
         <form>
@@ -126,9 +109,10 @@ class Search extends Component {
           <DatePicker
             placeholder="To Date"
             dateName="toDate"
-            onChange={this.handleToDate}
+            onChange={this.handleInputChange}
           />
-          <Button onSubmit={this.handleFormSubmit} />
+          {/* <Button onClick={this.handleFormSubmit} /> */}
+          <button onClick={this.handleFormSubmit}> Search</button>
         </form>
         {/* <SearchResults results={this.state.results} /> */}
       </div>

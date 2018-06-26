@@ -1,11 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// const articleSchema = new Schema({
+//   title: { type: String, required: true },
+//   publishdate: { type: String, required: true },
+//   url: { type: String, required: true },
+//   href: String,
+//   synopsis: String,
+//   date: { type: Date, default: Date.now }
+// });
 const articleSchema = new Schema({
   title: { type: String, required: true },
-  publishdate: { type: String, required: true },
   url: { type: String, required: true },
-  href: String,
   synopsis: String,
   date: { type: Date, default: Date.now }
 });
