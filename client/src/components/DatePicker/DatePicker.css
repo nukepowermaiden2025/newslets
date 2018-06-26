@@ -216,3 +216,8 @@ td.rdtYear:hover {
 .rdtTime td {
   cursor: default;
 }
+
+.rdt {
+  background-color: green;
+  display: inline;
+}

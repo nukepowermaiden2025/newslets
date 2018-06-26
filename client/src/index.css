@@ -42,11 +42,11 @@ body {
   grid-column: 1/-1;
 }
 
-.form1 {
-  grid-column: 4/8;
-  grid-row: 1/2;
+form {
+  grid-column: 1/-1;
+  /* grid-row: 1/2; */
 }
-.form2 {
-  grid-column: 4/8;
-  grid-row: 2/3;
+
+.rdt {
+  background-color: green;
 }
