@@ -15,9 +15,11 @@ import moment from "moment";
 
 class Search extends Component {
   state = {
-    fromDate: "",
-    toDate: "",
-    search: "",
+    fromDate: moment(Date.now()).format("YYYYMMDD"),
+    toDate: moment(Date.now())
+      .add(3, "days")
+      .format("YYYYMMDD"),
+    search: "United States",
     listpick: 5,
     articles: [],
     results: [],
@@ -26,33 +28,30 @@ class Search extends Component {
   };
 
   // // When the component mounts, get a list of todays headlines
-  // componentDidMount() {
-  //   this.loadArticles(
-  //     this.state.search,
-  //     this.state.fromDate,
-  //     this.state.toDate
-  //   );
-  // }
+  componentDidMount() {
+    this.searchArticles(
+      this.state.search,
+      this.state.fromDate,
+      this.state.toDate
+    );
+  }
 
-  // // Search for Articles needs to get query from the API//TODO
-  // loadArticles = (query, fromDate, toDate) => {
-  //   API.search(query, fromDate, toDate)
-  //     .then(res => this.setState({ results: res.data }))
-  //     .catch(err => console.log(err));
-  // };
-
-  // When the form is submitted, search the OMDB API for the value of `this.state.search`
-  // handleFormSubmit = e => {
-  //   e.preventDefault();
-  //   console.log("The submit button is working");
-  //   console.log("Input From Date being sumitted is ", this.state.fromDate);
-  //   console.log("Input To Date being sumitted is ", this.state.toDate);
-  //   this.setState({
-  //     fromDate: "",
-  //     toDate: ""
-  //   });
-  //   // this.searchArticles(this.state.search);
-  // };
+  // Search for Articles needs to get query from the API//TODO
+  searchArticles = (query, fromDate, toDate) => {
+    API.search(query, fromDate, toDate)
+      .then(res => {
+        this.setState({ results: res.data });
+        console.log(res);
+        console.log(res.data.response.docs[0]);
+        console.log(res.data.response.docs[0].web_url);
+        console.log(res.data.response.docs[0].snippet);
+        console.log(res.data.response.docs[0].headline.main);
+        console.log(
+          moment(res.data.response.docs[0].pub_date).format("MM-DD-YYYY")
+        );
+      })
+      .catch(err => console.log(err));
+  };
 
   handleFromDate = date => {
     this.setState({ fromDate: moment(date._d).format("YYYYMMDD") });
@@ -80,37 +79,12 @@ class Search extends Component {
     console.log("this is the target record count", this.state.listpick);
     console.log("Input from date ", this.state.fromDate);
     console.log("Input to date ", this.state.toDate);
-    API.search(this.state.search, this.state.fromDate, this.state.toDate)
-      .then(function(res) {
-        // console.log(res);
-        // console.log(res.data.response.docs[0]);
-        // console.log(res.data.response.docs[0].web_url);
-        // console.log(res.data.response.docs[0].snippet);
-        // console.log(res.data.response.docs[0].headline.main);
-        // console.log(
-        //   moment(res.data.response.docs[0].pub_date).format("MM-DD-YYYY")
-        // );
 
-        res.data.response.docs.map(element => {
-          console.log(element.web_url);
-          // API.saveArticle({
-          //   //TODO look to see what the actual response is
-          //   title: response.data.title,
-          //   publishdate: response.data.publish_date,
-          //   url: response.data.url,
-          //   synopsis: response.data.synopsis
-          // });
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-    // .then(res => {
-    //   // this.setState({ results: res.data.response.docs });
-    //   // console.log(res);
-    //   console.log(res.data.data.response.docs);
-    // })
-    // .catch(err => console.log(err));
+    this.searchArticles(
+      this.state.search,
+      this.state.fromDate,
+      this.state.toDate
+    );
   };
 
   render() {
