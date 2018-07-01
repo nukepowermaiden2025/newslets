@@ -2,16 +2,14 @@
 //Search for articles based on startdate and enddate
 
 import React, { Component } from "react";
-import "./Search.css";
+// import "./Search.css";
+// import "../App.css";
 import API from "../utils/API";
 // import Container from "../components/Container";TODO
 import Button from "../components/Button"; //TODO connectbutton
 import Input from "../components/Input";
-// import SearchResults from "../components/SearchResults";
 import DatePicker from "../components/DatePicker";
 import ListPicker from "../components/ListPicker";
-
-import moment from "moment";
 
 class Search extends Component {
   state = {
