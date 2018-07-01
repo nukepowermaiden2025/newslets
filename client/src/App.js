@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import logo from "./icon_N.png";
 import "./App.css";
+import "./index.css";
 import API from "./utils/API";
 import Footer from "./components/Footer";
 import Title from "./components/Title";
 import Header from "./components/Header";
 import Article from "./components/Article";
-import Content from "./components/Content";
+// import Content from "./components/Content";
 import Button from "./components/Button"; //TODO connectbutton
 import Input from "./components/Input";
 import DatePicker from "./components/DatePicker";
@@ -18,7 +19,7 @@ class App extends Component {
   state = {
     fromDate: moment(Date.now()).format("YYYYMMDD"),
     toDate: moment(Date.now())
-      .add(3, "days")
+      .add(7, "days")
       .format("YYYYMMDD"),
     search: "United States",
     listpick: 5,
@@ -40,14 +41,6 @@ class App extends Component {
     API.search(query, fromDate, toDate)
       .then(res => {
         this.setState({ results: res.data.response.docs });
-        console.log(res);
-        console.log(res.data.response.docs[0]);
-        console.log(res.data.response.docs[0].web_url);
-        console.log(res.data.response.docs[0].snippet);
-        console.log(res.data.response.docs[0].headline.main);
-        console.log(
-          moment(res.data.response.docs[0].pub_date).format("MM-DD-YYYY")
-        );
       })
       .catch(err => console.log(err));
   };
@@ -74,10 +67,6 @@ class App extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-    console.log("Search:", this.state.search);
-    console.log("this is the target record count", this.state.listpick);
-    console.log("Input from date ", this.state.fromDate);
-    console.log("Input to date ", this.state.toDate);
 
     this.searchArticles(
       this.state.search,
@@ -88,8 +77,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Title logo={logo} /> */}
-        {/* <Search /> */}
         <div className="form-container">
           <form>
             <Input
@@ -112,29 +99,24 @@ class App extends Component {
               dateName="toDate"
               handledate={this.handleToDate}
             />
-            {/* <Button onClick={this.handleFormSubmit} /> */}
+
             <button onClick={this.handleFormSubmit}> Search</button>
           </form>
-          {/* <SearchResults results={this.state.results} /> */}
         </div>
 
         <div className="container">
           <Header />
-          <div className="aside">
+          <main className="aside">
             {this.state.results.map(result => (
               <Article
+                key={result._id}
                 title={result.headline.main}
                 synopsis={result.snippet}
-                publication={result.web_url}
-                src={result.web_url}
-                href={result.web_url}
+                publication={moment(result.pub_date).format("MM-DD-YYYY")}
+                // href={result.web_url}
               />
             ))}
-          </div>
-          <Content contentPosition="content-a" feature="CONTENT A" />
-          <Content contentPosition="content-b" feature="CONTENT B" />
-          <Content contentPosition="content-c" feature="CONTENT C" />
-          <Content contentPosition="content-d" feature="CONTENT D" />
+          </main>
           <footer className="footer">FOOTER</footer>
         </div>
         <Footer />

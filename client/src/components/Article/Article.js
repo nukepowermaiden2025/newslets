@@ -12,20 +12,21 @@
 //Note when I return the JSON from the api I will return all the
 import React from "react";
 import "./Article.css";
+import "../../index.css";
+// import Link from "react-router/lib/Link";
 
 const Article = props => {
   return (
     <div className="article">
+      {/* component={Link} */}
+      {/* to={props.href} */}
       <h1>{props.title}</h1>
       <p>
         {props.synopsis}
         <br />
         {props.publication}
       </p>
-
-      <img src={props.src} href={props.href} />
-
-      <button onClick={e => props.handleSaveArticle(...props)}>Save</button>
+      <button onClick={e => props.handleSaveArticle}>Save</button>
     </div>
   );
 };
