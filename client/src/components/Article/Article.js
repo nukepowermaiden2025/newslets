@@ -20,13 +20,15 @@ const Article = props => {
     <div className="article">
       {/* component={Link} */}
       {/* to={props.href} */}
-      <h1>{props.title}</h1>
+      <a href={props.href}>
+        <h1>{props.title}</h1>
+      </a>
       <p>
         {props.synopsis}
         <br />
         {props.publication}
       </p>
-      <button onClick={e => props.handleSaveArticle}>Save</button>
+      <button onClick={props.onClick}>Save</button>
     </div>
   );
 };

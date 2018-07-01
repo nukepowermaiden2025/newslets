@@ -7,7 +7,6 @@ import Footer from "./components/Footer";
 import Title from "./components/Title";
 import Header from "./components/Header";
 import Article from "./components/Article";
-// import Content from "./components/Content";
 import Button from "./components/Button"; //TODO connectbutton
 import Input from "./components/Input";
 import DatePicker from "./components/DatePicker";
@@ -35,15 +34,28 @@ class App extends Component {
       this.state.toDate
     );
   }
-
   // Search for Articles needs to get query from the API//TODO
   searchArticles = (query, fromDate, toDate) => {
     API.search(query, fromDate, toDate)
       .then(res => {
         this.setState({ results: res.data.response.docs });
+        res.data.response.docs.forEach(result => {
+          API.saveArticle({
+            title: result.headline.main,
+            publishdate: result.pub_date,
+            url: result.web_url,
+            synopsis: result.snippet
+          });
+          console.log("The article saved is", result);
+        });
       })
       .catch(err => console.log(err));
   };
+
+  //Save article to db
+  // handleSaveArticle = articleData => {
+  //   console.log("trying to save an article");
+  // };
 
   handleFromDate = date => {
     this.setState({ fromDate: moment(date._d).format("YYYYMMDD") });
@@ -74,6 +86,7 @@ class App extends Component {
       this.state.toDate
     );
   };
+
   render() {
     return (
       <div className="App">
@@ -113,6 +126,7 @@ class App extends Component {
                 title={result.headline.main}
                 synopsis={result.snippet}
                 publication={moment(result.pub_date).format("MM-DD-YYYY")}
+                onClick={this.handleSaveArticle}
                 // href={result.web_url}
               />
             ))}
