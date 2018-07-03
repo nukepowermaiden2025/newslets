@@ -32,7 +32,7 @@ export default {
   },
   // Saves a Article to the database
   saveArticle: function(articleData) {
-    console.log(articleData); //Working
+    // console.log(articleData); //Working
     return axios.post("/api/articles", articleData);
   }
 };

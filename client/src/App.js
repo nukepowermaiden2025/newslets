@@ -39,20 +39,22 @@ class App extends Component {
     API.search(query, fromDate, toDate)
       .then(res => {
         this.setState({ results: res.data.response.docs });
-        console.log(this.state.results);
-        //save each article to db
-        // res.data.response.docs.forEach(result => {
-        //   console.log("The article saved is", result);
-        // });
+        // console.log(this.state.results);
       })
       .catch(err => console.log(err));
   };
+
+  getArticles = () =>
+    API.getArticles().then(res => {
+      // this.setState({ results: res });
+      console.log(res.data);
+    });
+
   // Save article to db when user click save button
   handleSaveArticle = id => {
     const article = this.state.results.find(result => result._id === id);
-    // API.saveArticle(article).then(res => this.getArticles());
-    console.log(article); //Working
-    API.saveArticle(article);
+    API.saveArticle(article).then(res => this.getArticles());
+    // console.log(article); //Working
   };
 
   handleFromDate = date => {
