@@ -39,6 +39,8 @@ class App extends Component {
     API.search(query, fromDate, toDate)
       .then(res => {
         this.setState({ results: res.data.response.docs });
+        console.log(this.state.results);
+        //save each article to db
         res.data.response.docs.forEach(result => {
           API.saveArticle({
             title: result.headline.main,
@@ -51,8 +53,7 @@ class App extends Component {
       })
       .catch(err => console.log(err));
   };
-
-  //Save article to db
+  //Save article to db when user click save button
   // handleSaveArticle = articleData => {
   //   console.log("trying to save an article");
   // };
