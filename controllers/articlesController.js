@@ -14,8 +14,16 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.Article.create(req.body)
-      .then(dbModel => res.json(dbModel))
+    console.log(req.body);
+    const article = {
+      id: req.body._id,
+      title: req.body.headline.main,
+      synopsis: req.body.snippet,
+      url: req.body.web_url,
+      publishdate: req.body.pub_date
+    };
+    db.Article.create(article)
+      .then(dbArticle => res.json(dbArticle))
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {

@@ -18,20 +18,21 @@ export default {
     console.log(query);
   },
 
-  // Gets all books
+  // Gets all
   getArticles: function() {
-    return axios.get("/api/article");
+    return axios.get("/api/articles");
   },
   // Gets the Article with the given id
   getArticle: function(id) {
-    return axios.get("/api/article/" + id);
+    return axios.get("/api/articles/" + id);
   },
   // Deletes the Article with the given id
   deleteArticle: function(id) {
-    return axios.delete("/api/article/" + id);
+    return axios.delete("/api/articles/" + id);
   },
   // Saves a Article to the database
   saveArticle: function(articleData) {
-    return axios.post("/api/article", articleData);
+    console.log(articleData); //Working
+    return axios.post("/api/articles", articleData);
   }
 };

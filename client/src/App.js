@@ -41,22 +41,19 @@ class App extends Component {
         this.setState({ results: res.data.response.docs });
         console.log(this.state.results);
         //save each article to db
-        res.data.response.docs.forEach(result => {
-          API.saveArticle({
-            title: result.headline.main,
-            publishdate: result.pub_date,
-            url: result.web_url,
-            synopsis: result.snippet
-          });
-          console.log("The article saved is", result);
-        });
+        // res.data.response.docs.forEach(result => {
+        //   console.log("The article saved is", result);
+        // });
       })
       .catch(err => console.log(err));
   };
-  //Save article to db when user click save button
-  // handleSaveArticle = articleData => {
-  //   console.log("trying to save an article");
-  // };
+  // Save article to db when user click save button
+  handleSaveArticle = id => {
+    const article = this.state.results.find(result => result._id === id);
+    // API.saveArticle(article).then(res => this.getArticles());
+    console.log(article); //Working
+    API.saveArticle(article);
+  };
 
   handleFromDate = date => {
     this.setState({ fromDate: moment(date._d).format("YYYYMMDD") });
@@ -124,10 +121,11 @@ class App extends Component {
             {this.state.results.map(result => (
               <Article
                 key={result._id}
+                id={result._id}
                 title={result.headline.main}
                 synopsis={result.snippet}
                 publication={moment(result.pub_date).format("MM-DD-YYYY")}
-                onClick={this.handleSaveArticle}
+                handleClick={this.handleSaveArticle}
                 // href={result.web_url}
               />
             ))}
