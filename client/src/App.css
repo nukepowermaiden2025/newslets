@@ -10,35 +10,35 @@
   justify-content: center;
   align-items: center;
   font-size: 2em;
-  color: #ffeead;
+  color: rgb(89, 148, 148);
 }
 .article {
-  background-color: darkcyan;
+  background-color: #d0f1f5;
   padding: 0.5rem;
 }
 
 html,
 body {
-  background-color: #ffeead;
+  background-color: white;
   margin: 10px;
 }
 
 .container > div:nth-child(1n) {
-  background-color: #96ceb4;
+  background-color: #bce758f1;
 }
 
 .container > div:nth-child(3n) {
-  background-color: #88d8b0;
+  background-color: #cddddf;
 }
 
 .container > div:nth-child(3n) > div {
-  background-color: #95d888;
+  background-color: #cddddf;
 }
 
 .container > div:nth-child(2n) {
-  background-color: #ff6f69;
+  background-color: #cddddf;
 }
 
 .container > footer {
-  background-color: #ffcc5c;
+  background-color: white;
 }

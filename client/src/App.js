@@ -132,7 +132,6 @@ class App extends Component {
               />
             ))}
           </main>
-          <footer className="footer">FOOTER</footer>
         </div>
         <Footer />
       </div>
